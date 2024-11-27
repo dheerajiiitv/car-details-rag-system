@@ -95,13 +95,20 @@ car-details-rag-system/
 
 1. Clone the repository
 2. Navigate to the project root directory
-3. Build and start the containers:
+3. Set the OpenAI API key as an environment variable:
+   ```bash
+   export OPENAI_API_KEY=<your-openai-api-key>
+   ```
+4. Build and start the containers:
    ```bash
    docker-compose up --build
    ```
-4. Access the application:
+5. Access the application:
    - Frontend: http://localhost:8501
    - Backend API: http://localhost:8000
+
+#### Sample Output Screenshot
+![Sample Output](./sample_output.png)
 
 #### Stopping the Application
 
