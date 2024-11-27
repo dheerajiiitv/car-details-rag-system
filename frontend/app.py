@@ -3,16 +3,12 @@ import requests
 from streamlit.components.v1 import html
 from streamlit_pdf_viewer import pdf_viewer
 
-# Global dictionary to store car model names and file paths
-if 'car_manuals' not in st.session_state:
-    st.session_state.car_manuals = {}
 
 st.title("Car Manual QA System")
 
 # Add sidebar for manual selection
 with st.sidebar:
     st.header("Upload Manual")
-    st.write("Files in session state\n: {}".format(st.session_state.car_manuals))
     uploaded_file = st.file_uploader("Upload Car Manual (PDF)", type=['pdf'])
     car_model = st.text_input("Enter Car Model:")
     
@@ -27,9 +23,6 @@ with st.sidebar:
         )
         
         if response.status_code == 200:
-            # Store the car model and file path in session state
-            file_path = "data/" + uploaded_file.name
-            st.session_state.car_manuals[car_model] = file_path
             st.success("Manual uploaded and indexed successfully!")
         else:
             st.error("Error uploading manual")
@@ -84,7 +77,7 @@ if st.button("Ask"):
                             try:
                                 # Add error handling and debug info
                                 st.write(f"Number of annotations: {len(annotations)}")
-                                st.write(f"First annotation: {annotations[0]}")
+                                st.write(f"Page numbers: {', '.join(map(str, result['page_numbers']))}")
                                 
                                 pdf_viewer(
                                     input=f"data/{result['filename']}",
