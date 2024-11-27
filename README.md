@@ -59,7 +59,7 @@ Car owners often need quick access to specific information from their vehicle's 
 
 
 ### File Structure
-
+```
 car-details-rag-system/
 ├── backend/
 │   ├── app/
@@ -81,7 +81,7 @@ car-details-rag-system/
 │── README.md
 │
 └── docker-compose.yml            # Orchestration of services
-
+```
 
 ## Running the project
 
