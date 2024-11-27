@@ -4,7 +4,7 @@ import uuid
 import chromadb
 from langchain_openai import OpenAIEmbeddings
 from app.models import QueryBreakdownLLM
-from pdf_processor import ProcessedDocument
+from app.pdf_processor import ProcessedDocument
 
 
 class DocumentIndexer:

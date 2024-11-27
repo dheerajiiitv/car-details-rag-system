@@ -19,18 +19,4 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - DATABASE_URL=postgresql://user:password@db:5432/dbname
-    depends_on:
-      - db
-
-  db:
-    image: postgres:13
-    environment:
-      - POSTGRES_USER=user
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=dbname
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-
-volumes:
-  postgres_data:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}

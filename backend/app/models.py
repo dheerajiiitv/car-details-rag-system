@@ -35,8 +35,8 @@ class QueryResult(QueryResultLLM):
     coordinates: List[Dict[str, float]] = Field(description="The coordinates of the answer on the PDF page.")
     page_numbers: List[int] = Field(description="The page numbers of the retrieved documents that contain the answer.")
     retrieved_documents: List[str] = Field(description="The retrieved documents that contain the answer.")
-    document_id: CarModelName = Field(description="The document id of the retrieved document that contains the answer.")
-    filename: str = Field(description="The filename of the retrieved document that contains the answer.")
+    document_id: Optional[CarModelName] = Field(description="The document id of the retrieved document that contains the answer.", default=None)
+    filename: Optional[str] = Field(description="The filename of the retrieved document that contains the answer.", default=None)
 
 class ChunkMetadata(BaseModel):
     start_index: int

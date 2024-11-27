@@ -21,14 +21,14 @@ with st.sidebar:
         data = {"id": car_model}
         
         response = requests.post(
-            "http://localhost:8000/index",
+            "http://backend:8000/index",
             files=files,
             data=data
         )
         
         if response.status_code == 200:
             # Store the car model and file path in session state
-            file_path = "../backend/data/" + uploaded_file.name
+            file_path = "data/" + uploaded_file.name
             st.session_state.car_manuals[car_model] = file_path
             st.success("Manual uploaded and indexed successfully!")
         else:
@@ -40,7 +40,7 @@ question = st.text_input("Enter your question:")
 if st.button("Ask"):
     if question:
         response = requests.post(
-            "http://localhost:8000/query",
+            "http://backend:8000/query",
             json={
                 "question": question
             }
@@ -87,7 +87,7 @@ if st.button("Ask"):
                                 st.write(f"First annotation: {annotations[0]}")
                                 
                                 pdf_viewer(
-                                    input=f"../backend/data/{result['filename']}",
+                                    input=f"data/{result['filename']}",
                                     width=700,
                                     height=600,
                                     annotations=annotations,

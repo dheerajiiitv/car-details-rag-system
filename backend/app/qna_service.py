@@ -53,7 +53,16 @@ class QNAService:
 
     def _process_single_query(self, query) -> Optional[QueryResult]:
         if query.document_id is None:
-            return None
+            # If the query is not related to any document, return answer "Manual not available"
+            return QueryResult(
+                answer="Manual not available",
+                sources=[],
+                coordinates=[],
+                retrieved_documents=[],
+                page_numbers=[],
+                document_id=None,
+                filename=None
+            )
         docs = self.processor.indexer.query_database(query)
         logger.info(f"Retrieved documents: {docs}")
         
