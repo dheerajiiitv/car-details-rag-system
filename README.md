@@ -67,13 +67,13 @@ car-details-rag-system/
 │   │   ├── main.py                # FastAPI application
 │   │   ├── database.py            # ChromaDB setup and operations
 │   │   ├── models.py              # Pydantic models
-│   │   └── utils.py               # Utility functions
-│   ├── data/
-│   │   └── manuals/              # Store PDF manuals here
+│   │   └── utils/logger.py        # Utility functions
 │   ├── requirements.txt
 │   └── Dockerfile
 │
 ├── frontend/
+│   ├── data/
+│   │   └── manuals/                # Store PDF manuals here
 │   ├── app.py                    # Streamlit application
 │   ├── requirements.txt
 │   └── Dockerfile
@@ -107,8 +107,8 @@ car-details-rag-system/
    - Frontend: http://localhost:8501
    - Backend API: http://localhost:8000
 
-#### Sample Output Screenshot
-![Sample Output](./sample_output.png)
+#### Sample Output demo video
+
 
 #### Stopping the Application
 
@@ -122,6 +122,9 @@ docker-compose down
 1. Multicolumn pdfs might mix up and contain mix text from different columns. Need to use Document vision to detect columns and extract text from each column.
 2. Improving Retrieval
    - Using reranker to improve retrieval.
-   - Adding metadata about chunk while indexing to help with retrieval.
+   - Adding metadata about chunk while indexing to help with retrieval. (like using vehicle section names)
+3. Improving the prompt for better answer quality.
+
+
 
 
